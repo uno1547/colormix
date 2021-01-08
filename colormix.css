@@ -88,3 +88,14 @@ input {
 .result {
     margin: 0;
 }
+
+.ex {
+    font-size: 30px;
+    font-weight: bold;
+}
+.color{
+    width: 40px;
+    height: 40px;
+    /* border-radius: 15px; */
+    border: black solid 1px;
+}

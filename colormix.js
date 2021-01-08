@@ -68,6 +68,7 @@ function inputState() {
         console.log("someempty")
     }
 }
+
 function colorArrange() {
     const color1 = firstPalette.style.backgroundColor
     const color2 = secondPalette.style.backgroundColor
@@ -84,21 +85,17 @@ function colorArrange() {
     for(i = 0; i <= 10; i++) {
         let mixedValue = blendColor(firstRGB, secondRGB, (i*(1/10))) // 섞인상태의 rgb값리스트
         let distance = getDistance(mixedValue, thirdRGB)
-        mixValues.push(distance)
+        mixValues.push({
+            distance: distance,
+            index: i
+        })
     }
     console.log(mixValues)//각 거리들 들어간 리스트 
-    mixValues.sort(function(a, b){return a - b})
+    mixValues.sort(function(a, b){return a.distance - b.distance})
     let min = mixValues[0]
-    for(i = 0; i <= 10; i++) {
-        let mixedValue = blendColor(firstRGB, secondRGB, (i*(1/10))) // 섞인상태의 rgb값리스트
-        let distance = getDistance(mixedValue, thirdRGB)
-        if (distance == min) {
-            console.log("This is the index", i)
-        }
-    }
-    console.log(min)
+    console.log(min.index)//7
     exDiv = document.querySelector(".ex")
-    exDive.innerHTML += ''
+    exDiv.innerHTML = 'color1 : color2 = '+ (1-((min.index)*(1/10)))+':'+ (min.index)*(1/10)
 }
 
 function toArray(color) {// rgb리스트에 3개로 저장
@@ -121,14 +118,15 @@ function blendColor(RGB1, RGB2, ratio) {
     // console.log(newB)
     valueList.push(newB)
     let exDiv = document.querySelector(".ex")
-    exDiv.innerHTML += `<div class = "box-container4">
-        <div class = "input result">Result color</div>
-        <div class="palette" id="forth" style="background-color: rgb(${newR}, ${newG}, ${newB});"></div>
-        <div style = ""></div>
-    </div>`
+    // exDiv.innerHTML += `<div class = "box-container4">
+    //     <div class = "input result">Result color</div>
+    //     <div class="palette" id="forth" style="background-color: rgb(${newR}, ${newG}, ${newB});"></div>
+    //     <div style = ""></div>
+    // </div>`
     return valueList
     //whatis
 }
+
 function blendColorValue(color1, color2, ratio) {//color1,color2의 각 RGB값을따로 계산
     let value1 = Number(color1)
     let value2 = Number(color2)
