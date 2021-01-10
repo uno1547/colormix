@@ -4,19 +4,20 @@
 </head>
 <body>
     <h1>What color do you want?</h1>
-    <h2>(enter HEX and get ratio)</h2>
+    <h2>1. enter HEX(#rrggbb) or choose in palette</h2>
+    <h2>2. get ratio of two colors</h2>
     <div class = "grandma">
         <div class = "mother">
             <div class = "box-container">
                 <div class = 'input'>Color1: <input class = 'color1' placeholder = "(first color)"></div>
                 <div class = "ghost"></div>
-                <div class = 'palette' id = "first"></div>
+                <input type = "color" class = "color firstinput">
             </div>
             <div class = "sum">+</div>
             <div class = "box-container">
                 <div class = "input">Color2: <input class = 'color2' placeholder = "(second color)"></div>
                 <div class = "ghost"></div>
-                <div class = "palette" id = "second"></div>
+                <input type = "color" class = "color secondinput">
             </div>
         </div>
         <div class = "down">
@@ -25,14 +26,13 @@
         <div class = "box-container3">
             <div class = "input">Your color: <input class = "color3" placeholder = "(third color)"></div>
             <div class = "ghost"></div>
-            <div class = "palette" id = "third"></div>
+            <input type = "color" class = "color thirdinput">
         </div>    
         <!-- <div class = "box-container4">
             <div class = "input result">Result color</div>
             <div class = "palette" id = "forth"></div>
         </div> -->
         <div class = "ex"></div>
-        <input type = "color" class = "color">
     </div>
     <script src = "colormix.js"></script>
 </body>

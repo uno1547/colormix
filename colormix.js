@@ -12,7 +12,7 @@
 
 // }
 
-const firstColor = document.querySelector(".color1")
+/* const firstColor = document.querySelector(".color1")
 const firstPalette = document.querySelector("#first")
 let firstInput = false
 firstColor.addEventListener("change", function() {
@@ -26,7 +26,26 @@ firstColor.addEventListener("change", function() {
         // console.log("firstFalse")
     }
     inputState()
+}) */
+const firstInput = document.querySelector(".color1")
+const firstColorInput = document.querySelector(".firstinput")
+let isFirstFill = false
+firstInput.addEventListener("change", function() {
+    let inputValue = this.value
+    if()
+    let rgbList = toArray(inputValue)//세개 rgb값담긴 리스트(문자열상태)'
+    let hexCode = "#" + rgbToHex(rgbList) // 16진수 코드 6자리 
+    console.log(hexCode)
+    // let inputValue = this.value
+    // firstColorInput.value = this.value
 })
+firstColorInput.addEventListener("change", function() {
+    console.log("firstinput change")
+    firstInput.value = this.value
+})
+function hello(){
+    console.log("hello")
+}
 
 const secondColor = document.querySelector(".color2")
 const secondPalette = document.querySelector("#second")
@@ -102,10 +121,22 @@ function toArray(color) {// rgb리스트에 3개로 저장
     const start = (color.indexOf("(")) + 1
     const end = (color.indexOf(")"))
     const colorCor = color.substring(start, end)
-    const colorRGB = colorCor.split(", ")
+    const colorRGB = colorCor.split(",")
     return colorRGB
 }
 
+function rgbToHex(rgblist){ //문자열인 rgb값 길이 3인 리스트로 받음
+    let numList = []
+    let hexCode = ""
+    for(i = 0; i < 3; i++) {
+        numList.push((Number(rgblist[i]).toString(16))) // numList 에 16진수 문자열형태로 전환
+    }
+    console.log(numList) // 문자열인 16진수값 길이 3인 리스트상태 
+    for(i = 0; i < 3; i++) { // 빈문자열에 더해서 코드 생성
+        hexCode += numList[i]
+    }
+    return hexCode
+}
 function blendColor(RGB1, RGB2, ratio) {
     let valueList = []
     const newR = blendColorValue(RGB1[0], RGB2[0], ratio)
@@ -143,3 +174,4 @@ function getDistance(RGB, yourRGB) { //거리 잼
     let distance = Math.sqrt((newRvalue-yourRvalue)**2+(newGvalue-yourGvalue)**2+(newBvalue-yourBvalue)**2)
     return distance
 }
+

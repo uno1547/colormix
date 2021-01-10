@@ -9,6 +9,7 @@ h1 {
 }
 h2 {
     color: red;
+    margin: 7px;
 }
 .grandma {
     display: flex;
@@ -25,7 +26,7 @@ h2 {
 
 .box-container {
     display: flex;
-    width: 270px;
+    width: 267px;
     justify-content: space-around;
 }
 
@@ -94,7 +95,7 @@ input {
     font-weight: bold;
 }
 .color{
-    width: 40px;
+    width: 35px;
     height: 40px;
     /* border-radius: 15px; */
     border: black solid 1px;
