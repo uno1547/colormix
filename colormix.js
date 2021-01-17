@@ -21,81 +21,82 @@ firstColor.addEventListener("change", function() {
     if(this.value != "") {//
         firstInput = true
         // console.log("first"+firstInput)
+        // console.log("first"+firstInput)
+        // console.log("first"+firstInput)
+        // console.log("first"+firstInput)
+        // console.log("first"+firstInput)
+        // console.log("first"+firstInput)
+        // console.log("first"+firstInput)
     } else {
         firstInput = false
         // console.log("firstFalse")
     }
     inputState()
 }) */
-const firstInput = document.querySelector(".color1")
-const firstColorInput = document.querySelector(".firstinput")
-let isFirstFill = false
-firstInput.addEventListener("change", function() {
-    let inputValue = this.value
-    if()
-    let rgbList = toArray(inputValue)//세개 rgb값담긴 리스트(문자열상태)'
-    let hexCode = "#" + rgbToHex(rgbList) // 16진수 코드 6자리 
-    console.log(hexCode)
-    // let inputValue = this.value
-    // firstColorInput.value = this.value
+const firstCodeInput = document.querySelector(".color1") //hexcode or rgb 입력창
+const firstColorInput = document.querySelector(".firstinput")// palette
+firstCodeInput.addEventListener("change", function() {//input 태그 class = color1
+    inputCallback(firstCodeInput, firstColorInput)
+    inputState()
 })
 firstColorInput.addEventListener("change", function() {
-    console.log("firstinput change")
-    firstInput.value = this.value
+    firstCodeInput.value = this.value
+    inputState()
 })
-function hello(){
-    console.log("hello")
+
+const secondCodeInput = document.querySelector(".color2")
+const secondColorInput = document.querySelector(".secondinput")
+secondCodeInput.addEventListener("change", function() {
+    inputCallback(secondCodeInput, secondColorInput)
+    inputState()
+})
+secondColorInput.addEventListener("change", function() {
+    secondCodeInput.value = this.value
+    inputState()
+})
+
+const thirdCodeInput = document.querySelector(".color3")
+const thirdColorInput = document.querySelector(".thirdinput")
+thirdCodeInput.addEventListener("change", function() {
+    inputCallback(thirdCodeInput, thirdColorInput)
+    inputState()
+})
+thirdColorInput.addEventListener("change", function() {
+    thirdCodeInput.value = this.value
+    inputState()
+})
+
+function inputCallback(codeInput, colorInput) { //input에 change이벤트감지시 실행 인자로input태그받음
+    let inputValue = codeInput.value
+    console.log(inputValue)
+    if(inputValue[0] == "#") { // hexcode
+        // order.value = inputValue
+        colorInput.value = inputValue
+    } else if(inputValue[0] == "r") { // rgb 입력시 
+        let rgbList = toArray(inputValue)
+        let hexCode = "#" + rgbToHex(rgbList)
+        colorInput.value = hexCode
+    }
 }
-
-const secondColor = document.querySelector(".color2")
-const secondPalette = document.querySelector("#second")
-let secondInput = false
-secondColor.addEventListener("change", function() {
-    secondPalette.style.backgroundColor = this.value
-    // console.log(secondPalette.style.backgroundColor)
-    if(this.value != "") {
-        secondInput = true
-        // console.log("second"+secondInput)
-    } else { 
-        secondInput = false
-        // console.log("secondFalse")
-    }
-    inputState()
-})
-
-const thirdColor = document.querySelector(".color3")
-const thirdPalette = document.querySelector("#third")
-let thirdInput = false
-thirdColor.addEventListener("change", function() {
-    thirdPalette.style.backgroundColor = this.value
-    // console.log(thirdPalette.style.backgroundColor)
-    if(this.value != "") {
-        thirdInput = true
-        // console.log("third" + thirdInput)
-    } else {
-        thirdInput = false
-        // console.log("thirdFalse")
-    }
-    inputState()
-})
 
 function inputState() {
-    if((firstInput)&&(secondInput)&&(thirdInput)) {
-        console.log("allfilled")
+    if((firstCodeInput.value != 0) && (secondCodeInput.value != 0 ) && (thirdCodeInput.value != 0)){
+        console.log("all filled")
         colorArrange()
     } else {
-        console.log("someempty")
+        console.log("some empty")
     }
 }
 
+
 function colorArrange() {
-    const color1 = firstPalette.style.backgroundColor
-    const color2 = secondPalette.style.backgroundColor
-    const color3 = thirdPalette.style.backgroundColor
-    console.log(color1, color2, color3)//rgb(255,255,0)
-    const firstRGB = toArray(color1) // "[0,255,255]"
-    const secondRGB = toArray(color2)// "[255,0,255]"
-    const thirdRGB = toArray(color3)// "[255,255,0]"
+    const color1 = firstColorInput.value//16진수
+    const color2 = secondColorInput.value
+    const color3 = thirdColorInput.value
+    console.log(color1, color2, color3)//#ff00ff/ffff00/00ffff
+    const firstRGB = hexToDecimal(color1) // "[0,255,255]"
+    const secondRGB = hexToDecimal(color2)
+    const thirdRGB = hexToDecimal(color3)
     // const resultArea = document.querySelector(".box-container4")
     console.log("result-out")
     // resultArea.style.display = "flex"
@@ -113,8 +114,8 @@ function colorArrange() {
     mixValues.sort(function(a, b){return a.distance - b.distance})
     let min = mixValues[0]
     console.log(min.index)//7
-    exDiv = document.querySelector(".ex")
-    exDiv.innerHTML = 'color1 : color2 = '+ (1-((min.index)*(1/10)))+':'+ (min.index)*(1/10)
+    let exDiv = document.querySelector(".ex")
+    exDiv.innerHTML = 'color1 : color2 = '+ (1-((min.index)*(1/10))).toFixed(1)+':'+ (min.index)*(1/10).toFixed(1)
 }
 
 function toArray(color) {// rgb리스트에 3개로 저장
@@ -125,7 +126,7 @@ function toArray(color) {// rgb리스트에 3개로 저장
     return colorRGB
 }
 
-function rgbToHex(rgblist){ //문자열인 rgb값 길이 3인 리스트로 받음
+function rgbToHex(rgblist) { //문자열인 rgb값 길이 3인 리스트로 받음
     let numList = []
     let hexCode = ""
     for(i = 0; i < 3; i++) {
@@ -133,9 +134,23 @@ function rgbToHex(rgblist){ //문자열인 rgb값 길이 3인 리스트로 받�
     }
     console.log(numList) // 문자열인 16진수값 길이 3인 리스트상태 
     for(i = 0; i < 3; i++) { // 빈문자열에 더해서 코드 생성
-        hexCode += numList[i]
+        if(numList[i] == "0") {
+            hexCode += "00"
+        }else{
+            hexCode += numList[i]
+        }
     }
-    return hexCode
+    return hexCode // "#rrggbb" return
+}
+
+function hexToDecimal(hexCode) { // 16진수받고 10진수로변환 #ff00ff => [255,0,255]
+    let valueList = []
+    let redValue = parseInt(hexCode.substr(1, 2), 16)
+    let greenValue = parseInt(hexCode.substr(3, 2), 16)
+    let blueValue = parseInt(hexCode.substr(5, 2), 16)
+    valueList.push(redValue, greenValue, blueValue)
+    // console.log(redValue, greenValue, blueValue)
+    return valueList
 }
 function blendColor(RGB1, RGB2, ratio) {
     let valueList = []
