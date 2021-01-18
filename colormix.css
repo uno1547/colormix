@@ -3,11 +3,13 @@ body {
     text-align: center;
 }
 h1 {
+    font-family: 'Nanum Gothic', sans-serif;
     margin-top: 130px;
     margin-bottom: 20px;
     font-size: 60px;
 }
 h2 {
+    font-family: 'Nanum Gothic', sans-serif;
     color: red;
     margin: 7px;
 }
