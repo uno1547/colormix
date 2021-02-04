@@ -4,34 +4,33 @@
 </head>
 <body>
     <h1>색깔을 입력하세요</h1>
-    <h2>원하는 색과 두가지 재료색을 입력하면 재료색의 비율과 결과색을 얻을 수 있습니다.</h2>
+    <h2>원하는 색과 두가지 재료색을 입력하면 원하는 색에 근접한 결과색과 이때 두 재료색의 비율을 얻을 수 있습니다.</h2>
     <div class = "grandma">
-        <div class = "mother">
-            <div class = "box-container">
-                <div class = 'input'>재료색 1: <input class = 'color1' placeholder = "(first color)"></div>
-                <div class = "ghost"></div>
-                <input type = "color" class = "color firstinput">
-            </div>
-            <div class = "sum">+</div>
-            <div class = "box-container">
-                <div class = "input">재료색 2: <input class = 'color2' placeholder = "(second color)"></div>
-                <div class = "ghost"></div>
-                <input type = "color" class = "color secondinput">
-            </div>
-        </div>
-        <div class = "down">
-            <img src = "https://cdn.icon-icons.com/icons2/1339/PNG/512/downoutlinedarrow_87528.png" class = "down">
-        </div>
         <div class = "box-container3">
-            <div class = "input">결과색 : <input class = "color3" placeholder = "(third color)"></div>
+            <div class = "input">원하는색 : <input class = "color3" placeholder = "(third color)"></div>
             <div class = "ghost"></div>
             <input type = "color" class = "color thirdinput">
         </div>    
+        <!-- <div class = "down">
+            <img src = "https://cdn.icon-icons.com/icons2/1339/PNG/512/downoutlinedarrow_87528.png" class = "down">
+        </div> -->
+        <div class = "box-container1">
+            <div class = 'input'>재료색 1: <input class = 'color1' placeholder = "(first color)"></div>
+            <!-- <div class = "ghost"></div> -->
+            <input type = "color" class = "color firstinput">
+        </div>
+        <!-- <div class = "sum">+</div> -->
+        <div class = "box-container2">
+            <div class = "input">재료색 2: <input class = 'color2' placeholder = "(second color)"></div>
+            <!-- <div class = "ghost"></div> -->
+            <input type = "color" class = "color secondinput">
+        </div>
         <!-- <div class = "box-container4">
             <div class = "input result">Result color</div>
             <div class = "palette" id = "forth"></div>
         </div> -->
-        <div class = "ex"></div>
     </div>
+    <div class = "ex"></div>
     <script src = "colormix.js"></script>
 </body>
+

@@ -1,35 +1,40 @@
 body {
     margin: 0;
     text-align: center;
+    user-select: none;
 }
 h1 {
     font-family: 'Nanum Gothic', sans-serif;
     margin-top: 130px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     font-size: 60px;
 }
 h2 {
     font-family: 'Nanum Gothic', sans-serif;
-    color: red;
-    margin: 7px;
+    margin: 15px;
 }
 .grandma {
     display: flex;
     flex-direction: column;
-    height: 250px;
+    margin-bottom: 30px;
+    height: 270px;
 }
 .box-container3 {
     display: flex;
-    width: 320px;
+    width: 280px;
     /* height: 150px; */
-
     justify-content: space-around;
 }
 
-.box-container {
+.box-container1 {
     display: flex;
-    width: 267px;
+    width: 276px;
     justify-content: space-around;
+}
+
+.box-container2{
+    display: flex;
+    width: 276px;
 }
 
 div {
@@ -43,7 +48,7 @@ div {
     width: 620px;
 }
 .input {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: bold;
 }
 
@@ -74,8 +79,8 @@ input {
 }
 
 .down {
-    width: 73px;
-    height: 73px;
+    width: 70px;
+    height: 70px;
 }
 
 .box-container4 {
@@ -90,15 +95,26 @@ input {
 }
 .result {
     margin: 0;
+    line-height: 0px;
 }
 
 .ex {
     font-size: 30px;
-    font-weight: bold;
+    /* font-weight: bold; */
+    line-height: 50px;
 }
 .color{
     width: 35px;
     height: 40px;
     /* border-radius: 15px; */
     border: black solid 1px;
+}
+
+.bold{
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.small{
+    font-size: 23px;
 }

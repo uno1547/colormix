@@ -88,7 +88,6 @@ function inputState() {
     }
 }
 
-
 function colorArrange() {
     const color1 = firstColorInput.value//16진수
     const color2 = secondColorInput.value
@@ -114,9 +113,28 @@ function colorArrange() {
     mixValues.sort(function(a, b){return a.distance - b.distance})
     let min = mixValues[0]
     console.log(min.index)//7
+    let approximate = blendColor(firstRGB, secondRGB, (min.index)*(1/10))
+    console.log(approximate)
+    let hexcode = rgbToHex(approximate)
+    console.log(hexcode)
     let exDiv = document.querySelector(".ex")
-    exDiv.innerHTML = 'color1 : color2 = '+ (1-((min.index)*(1/10))).toFixed(1)+':'+ (min.index)*(1/10).toFixed(1)
+    exDiv.innerHTML = '재료색1과 재료색2를 '+ (1-((min.index)*(1/10))).toFixed(1)+':'+ ((min.index)*(1/10)).toFixed(1) + ' 로 섞으면<br>' + '근접한색'+ ' <span class = "bold">'+ "#" + hexcode +'</span>' + ' <input  type = "color" class = "color result">'+' 를 얻을 수 있습니다' +'<br>'+ '<span class = "small"> 코드클릭시 클립보드에복사됩니다</span>' 
+    let result = document.querySelector(".result")
+    result.value = "#"+hexcode
+    let code = document.querySelector(".bold")
+    code.addEventListener("click", function(){
+        let copyText = code.innerHTML
+        let tempElem = document.createElement('textarea')
+        tempElem.value = copyText
+        document.body.appendChild(tempElem)
+        tempElem.select()
+        document.execCommand("copy")
+        document.body.removeChild(tempElem)
+    })
+
 }
+
+
 
 function toArray(color) {// rgb리스트에 3개로 저장
     const start = (color.indexOf("(")) + 1
@@ -176,7 +194,7 @@ function blendColor(RGB1, RGB2, ratio) {
 function blendColorValue(color1, color2, ratio) {//color1,color2의 각 RGB값을따로 계산
     let value1 = Number(color1)
     let value2 = Number(color2)
-    return Math.sqrt((1-ratio)*(value1**2)+(ratio*(value2**2)))
+    return (Math.sqrt((1-ratio)*(value1**2)+(ratio*(value2**2)))).toFixed(0)
 }
 
 function getDistance(RGB, yourRGB) { //거리 잼
@@ -189,4 +207,3 @@ function getDistance(RGB, yourRGB) { //거리 잼
     let distance = Math.sqrt((newRvalue-yourRvalue)**2+(newGvalue-yourGvalue)**2+(newBvalue-yourBvalue)**2)
     return distance
 }
-
