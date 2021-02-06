@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <head>
     <link rel = 'stylesheet' href = 'colormix.css'>
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+<!-- <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet"> -->
+
 </head>
 <body>
     <h1>색깔을 입력하세요</h1>
-    <h2>원하는 색과 두가지 재료색을 입력하면 원하는 색에 근접한 결과색과 이때 두 재료색의 비율을 얻을 수 있습니다.</h2>
-    <div class = "grandma">
-        <div class = "box-container3">
-            <div class = "input">원하는색 : <input class = "color3" placeholder = "(third color)"></div>
-            <div class = "ghost"></div>
-            <input type = "color" class = "color thirdinput">
+    <h2</h2>
+    <h2>1.원하는색, 두가지 재료색 입력<span class = "explain">(코드입력 또는 선택)</span><br>2.근접한 결과색, 재료색 비율 출력</h2>
+    <div class = "body-container">
+        <div class = "expected-color-inputarea">
+            원하는색: <input class = "expected-color code" placeholder = "(16진수코드 or rgb값)"><input type = "color" class = "expected-color color">
         </div>    
-        <!-- <div class = "down">
-            <img src = "https://cdn.icon-icons.com/icons2/1339/PNG/512/downoutlinedarrow_87528.png" class = "down">
-        </div> -->
-        <div class = "box-container1">
-            <div class = 'input'>재료색 1: <input class = 'color1' placeholder = "(first color)"></div>
-            <!-- <div class = "ghost"></div> -->
-            <input type = "color" class = "color firstinput">
+        <div class = "first-color-inputarea">
+            재료색 1: <input class = 'first-color code' placeholder = "(16진수코드 or rgb값)"><input type = "color" class = "second-color color">
         </div>
-        <!-- <div class = "sum">+</div> -->
-        <div class = "box-container2">
-            <div class = "input">재료색 2: <input class = 'color2' placeholder = "(second color)"></div>
-            <!-- <div class = "ghost"></div> -->
-            <input type = "color" class = "color secondinput">
+        <div class = "second-color-inputarea">
+            재료색 2: <input class = 'second-color code' placeholder = "(16진수코드 or rgb값)"><input type = "color" class = "third-color color">
         </div>
         <!-- <div class = "box-container4">
-            <div class = "input result">Result color</div>
-            <div class = "palette" id = "forth"></div>
+            재료색 3:<input class = "code4"><input type = "color" class = "color4">
         </div> -->
+        <!-- <div class = "font">재료색 3:</div> -->
     </div>
     <div class = "ex"></div>
     <script src = "colormix.js"></script>

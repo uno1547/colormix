@@ -118,7 +118,8 @@ function colorArrange() {
     let hexcode = rgbToHex(approximate)
     console.log(hexcode)
     let exDiv = document.querySelector(".ex")
-    exDiv.innerHTML = '재료색1과 재료색2를 '+ (1-((min.index)*(1/10))).toFixed(1)+':'+ ((min.index)*(1/10)).toFixed(1) + ' 로 섞으면<br>' + '근접한색'+ ' <span class = "bold">'+ "#" + hexcode +'</span>' + ' <input  type = "color" class = "color result">'+' 를 얻을 수 있습니다' +'<br>'+ '<span class = "small"> 코드클릭시 클립보드에복사됩니다</span>' 
+    exDiv.innerHTML = '재료색1과 재료색2를 '+ (1-((min.index)*(1/10))).toFixed(1)+':'+ ((min.index)*(1/10)).toFixed(1) + ' 로 섞으면<br>' + '근접한색'+ 
+    ' <span class = "bold">'+ "#" + hexcode +'</span>' + ' <input  type = "color" class = "color result">'+' 를 얻을 수 있습니다' +'<br>'+ '<span class = "small"> 코드클릭시 클립보드에복사됩니다</span>' 
     let result = document.querySelector(".result")
     result.value = "#"+hexcode
     let code = document.querySelector(".bold")
@@ -152,8 +153,8 @@ function rgbToHex(rgblist) { //문자열인 rgb값 길이 3인 리스트로 받�
     }
     console.log(numList) // 문자열인 16진수값 길이 3인 리스트상태 
     for(i = 0; i < 3; i++) { // 빈문자열에 더해서 코드 생성
-        if(numList[i] == "0") {
-            hexCode += "00"
+        if(numList[i].length == 1) {
+            hexCode += "0" + numList[i]
         }else{
             hexCode += numList[i]
         }
